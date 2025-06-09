@@ -15,14 +15,15 @@ export const Button: React.FC<ButtonVariants> = ({
 	action,
 	className,
 	children,
-	link
+	link,
 }) => {
 	const variantOpt = {
 		Solid:
-			'px-[1.97rem] py-[0.94rem] bg-darkOrange subtitle uppercase hover:bg-fadedOrange duration-300',
+			'px-[1.97rem] py-[0.94rem] bg-darkOrange subtitle uppercase hover:bg-fadedOrange duration-300 text-pureWhite',
 		Outline:
 			'text-pureBlack px-[1.97rem] py-[0.94rem] border border-[1px] border-pureBlack hover:bg-pureBlack hover:text-pureWhite uppercase subtitle duration-300',
-		Ghost: 'text-pureBlack/50 hover:text-darkOrange subtitle duration-300 uppercase',
+		Ghost:
+			'text-pureBlack/50 hover:text-darkOrange subtitle duration-300 uppercase',
 	};
 
 	return (
