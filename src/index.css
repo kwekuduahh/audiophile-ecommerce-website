@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-weight: bold;
+    line-height: 58px;
+    font-size: 56px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-weight: bold;
+    line-height: 44px;
+    font-size: 40px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-weight: bold;
+    line-height: 36px;
+    font-size: 32px;
+    letter-spacing: 1.15px;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-weight: bold;
+    line-height: 38px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 33px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 18px;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.overline {
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 19px;
+    letter-spacing: 10px;
+}
+
+.subtitle {
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+body {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+@layer base {
+    :root {
+        --dark-orange: 22 65% 57%;
+        --faded-orange: 21 94% 75%;
+        --oil-black: 0 0% 6%;
+        --pure-black: 0 0% 0%;
+        --dark-white: 0 0% 95%;
+        --white-wash: 0 0% 98%;
+        --pure-white: 0 0% 100%;
+    }
+}
