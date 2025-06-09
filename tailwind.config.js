@@ -52,6 +52,83 @@ export default {
 				},
 			},
 		},
+		textTransform: {
+			uppercase: 'uppercase',
+		},
+
+		fontSize: {
+			h1: [
+				'56px',
+				{
+					lineHeight: '58px',
+					letterSpacing: '2px',
+					fontWeight: '700',
+				},
+			],
+			h2: [
+				'40px',
+				{
+					lineHeight: '44px',
+					letterSpacing: '1.5px',
+					fontWeight: '700',
+				},
+			],
+			h3: [
+				'32px',
+				{
+					lineHeight: '36px',
+					letterSpacing: '1.15px',
+					fontWeight: 'bold',
+				},
+			],
+			h4: [
+				'28px',
+				{
+					lineHeight: '38px',
+					letterSpacing: '2px',
+					fontWeight: 'bold',
+				},
+			],
+			h5: [
+				'24px',
+				{
+					lineHeight: '33px',
+					letterSpacing: '1.7px',
+					fontWeight: 'bold',
+				},
+			],
+			h6: [
+				'18px',
+				{
+					lineHeight: '24px',
+					letterSpacing: '1.3px',
+					fontWeight: 'bold',
+				},
+			],
+			overline: [
+				'14px',
+				{
+					lineHeight: '19px',
+					letterSpacing: '10px',
+					fontWeight: '400',
+				},
+			],
+			subtitle: [
+				'13px',
+				{
+					lineHeight: '25px',
+					letterSpacing: '1px',
+					fontWeight: 'bold',
+				},
+			],
+			body: [
+				'15px',
+				{
+					lineHeight: '25px',
+					fontWeight: 'bold',
+				},
+			],
+		},
 		colors: {
 			darkOrange: 'hsl(var(--dark-orange))',
 			fadedOrange: 'hsl(var(--faded-orange))',

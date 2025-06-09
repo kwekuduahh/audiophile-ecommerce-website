@@ -5,56 +5,56 @@ import { useMediaQuery } from 'react-responsive';
 
 const NavBar = () => {
 	const isDesktop = useMediaQuery({
-		query: '(min-width: 768px)',
+		query: '(min-width: 800px)',
 	});
 	const isTablet = useMediaQuery({
-		query: 'max-width: 375px',
+		query: '(max-width: 799px) and (min-width: 376px)',
 	});
 	const isMobile = useMediaQuery({
-		query: 'max-width:375px',
+		query: '(max-width: 375px)',
 	});
 
 	return (
-		<header className="bg-pureBlack ">
+		<header className="bg-oilBlack ">
 			<section
-				className={`viewport flex flex-row w-full justify-between py-[2.25rem] border-b-[0.0625rem] border-pureWhite/20 ${isTablet && `px-[2.48rem]`}`}
+				className={`viewport flex flex-row w-full justify-between py-[2.25rem] border-b-[0.0625rem] border-pureWhite/20 ${isTablet && `px-[2.48rem]`} ${isDesktop && `px-[2.48rem]`} ${isMobile && `px-[1.2rem]`}`}
 			>
 				{isMobile && <AlignJustify className="stroke-pureWhite" />}
-				<div className="">
+				<div className="flex flex-row gap-x-[2.26rem]">
 					{isTablet && <AlignJustify className="stroke-pureWhite" />}
 					<Link to="/">
 						<img src="/audiophileLogo.svg" alt="Logo of Audiophile" />
 					</Link>
 				</div>
 				{isDesktop && (
-					<div className="nav flex flex-row gap-x-[2.12rem]">
+					<nav className=" flex flex-row gap-x-[2.12rem]">
 						<Link
-							to="/headphones"
-							className="subtitle text-pureWhite hover:text-darkOrange duration-300"
+							to="/"
+							className="uppercase duration-300 text-subtitle text-pureWhite hover:text-darkOrange"
 						>
 							Home
 						</Link>
 						<Link
 							to="/headphones"
-							className="subtitle text-pureWhite hover:text-darkOrange duration-300"
+							className="uppercase duration-300 text-subtitle text-pureWhite hover:text-darkOrange"
 						>
 							Headphones
 						</Link>
 						<Link
-							to="/headphones"
-							className="subtitle text-pureWhite hover:text-darkOrange duration-300"
+							to="/speakers"
+							className="uppercase duration-300 text-subtitle text-pureWhite hover:text-darkOrange"
 						>
 							Speakers
 						</Link>
 						<Link
-							to="/headphones"
-							className="subtitle text-pureWhite hover:text-darkOrange duration-300"
+							to="/earphones"
+							className="uppercase duration-300 text-subtitle text-pureWhite hover:text-darkOrange"
 						>
 							Earphones
 						</Link>
-					</div>
+					</nav>
 				)}
-				<div className="">
+				<div>
 					<CartPopover>
 						<ShoppingCart className="stroke-pureWhite" />
 					</CartPopover>
