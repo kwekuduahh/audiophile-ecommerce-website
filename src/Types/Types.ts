@@ -14,13 +14,13 @@ export type Product = {
 	gallery: Gallery;
 };
 
-type Image = {
+export type Image = {
 	[K in Display]: string;
 };
 
 export type Display = 'mobile' | 'tablet' | 'desktop';
 
-type Include = {
+export type Include = {
 	quantity: number;
 	item: string;
 };
@@ -31,8 +31,16 @@ type Gallery = {
 	third: Image;
 };
 
-type OtherItem = {
+export type OtherItem = {
 	slug: string;
 	name: string;
-	otherItemImage: Image;
+	Image: Image;
+};
+
+export type CartItem = {
+	id: number | undefined;
+	name: string | undefined;
+	productImage: string | undefined;
+	price: number | undefined;
+	quantity: number | undefined;
 };

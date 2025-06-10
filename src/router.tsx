@@ -19,8 +19,8 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ':slug',
-				element: <ProductDetail />
-			}
-		]
-	}
+				element: <ProductDetail />,
+			},
+		],
+	},
 ]);
