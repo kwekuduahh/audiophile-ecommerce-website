@@ -12,11 +12,7 @@ interface CartProps {
 	Products: CartItem[];
 }
 
-
 export const CartPopover: React.FC<CartProps> = ({ children, Products }) => {
-
-
-
 	return (
 		<Popover>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -32,22 +28,35 @@ export const CartPopover: React.FC<CartProps> = ({ children, Products }) => {
 						</button>
 					</div>
 					<div className="grid w-full grid-cols-1 gap-2">
-						{0 ? (Products.map((Product) => (
-							<ItemInCart item={
-								{ id: Product.id, name: Product.name, slug: Product.slug, price: Product.price, quantity: 1 }
-							} />
-						))) : (
-							<p className="text-center text-body text-pureBlack/50">Your cart is empty</p>
+						{0 ? (
+							Products.map((Product) => (
+								<ItemInCart
+									item={{
+										id: Product.id,
+										name: Product.name,
+										slug: Product.slug,
+										price: Product.price,
+										quantity: 1,
+									}}
+								/>
+							))
+						) : (
+							<p className="text-center text-body text-pureBlack/50">
+								Your cart is empty
+							</p>
 						)}
 					</div>
 					<div className="flex flex-col w-full gap-y-5">
 						<div className="flex flex-row justify-between">
-							<p className='uppercase text-body text-pureBlack/50'>Total</p>
-							<p className='uppercase text-body text-pureBlack/50'>
+							<p className="uppercase text-body text-pureBlack/50">Total</p>
+							<p className="uppercase text-body text-pureBlack/50">
 								<NumberFormat amount={5396} currency="USD" />
 							</p>
 						</div>
-						<button className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange" disabled={true}>
+						<button
+							className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
+							disabled={true}
+						>
 							Checkout
 						</button>
 					</div>

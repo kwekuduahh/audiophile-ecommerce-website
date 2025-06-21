@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
 			{
 				path: 'checkout',
 				element: <Checkout />,
-			}
-		]
+			},
+		],
 	},
 	{
 		path: ':category/',
@@ -35,5 +35,4 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-
 ]);

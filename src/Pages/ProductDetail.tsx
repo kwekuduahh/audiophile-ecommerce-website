@@ -27,7 +27,9 @@ const ProductDetail: React.FC = () => {
 
 			{!product && (
 				<div className="flex items-center justify-center w-full h-screen">
-					<h1 className="text-2xl font-bold text-pureBlack">Product not found</h1>
+					<h1 className="text-2xl font-bold text-pureBlack">
+						Product not found
+					</h1>
 				</div>
 			)}
 
@@ -60,7 +62,7 @@ const ProductDetail: React.FC = () => {
 								</div>
 								<div className="flex flex-row items-start w-full gap-x-4 md:items-center lg:items-start">
 									<div className="flex flex-row items-center p-2 gap-x-4 bg-darkWhite w-fit">
-										<button onClick={() => { }}>
+										<button onClick={() => {}}>
 											<Minus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 										<div className="px-3 text-center ">
@@ -68,15 +70,13 @@ const ProductDetail: React.FC = () => {
 												{quantity}
 											</div>
 										</div>
-										<button
-											onClick={() => { }}
-										>
+										<button onClick={() => {}}>
 											<Plus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 									</div>
 									<button
 										className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
-										onClick={() => { }}
+										onClick={() => {}}
 									>
 										Add To Cart
 									</button>

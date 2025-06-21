@@ -4,7 +4,6 @@ import Footer from '../Design/Footer';
 import BestGear from '../Design/BestGear';
 import ProductsSection from '../Design/ProductsSection';
 
-
 const DetailLayout = () => {
 	return (
 		<>

@@ -20,9 +20,17 @@ const NavBar = () => {
 			<section
 				className={`viewport flex flex-row w-full justify-between py-[2.25rem] border-b-[0.0625rem] border-pureWhite/20 ${isTablet && `px-[2.48rem]`} ${isDesktop && `px-[2.48rem]`} ${isMobile && `px-[1.2rem]`}`}
 			>
-				{isMobile && <NavMenu><AlignJustify className="cursor-pointer stroke-pureWhite" /></NavMenu>}
+				{isMobile && (
+					<NavMenu>
+						<AlignJustify className="cursor-pointer stroke-pureWhite" />
+					</NavMenu>
+				)}
 				<div className="flex flex-row gap-x-[2.26rem]">
-					{isTablet && <NavMenu><AlignJustify className="cursor-pointer stroke-pureWhite" /></NavMenu>}
+					{isTablet && (
+						<NavMenu>
+							<AlignJustify className="cursor-pointer stroke-pureWhite" />
+						</NavMenu>
+					)}
 					<Link to="/">
 						<img src="/audiophileLogo.svg" alt="Logo of Audiophile" />
 					</Link>

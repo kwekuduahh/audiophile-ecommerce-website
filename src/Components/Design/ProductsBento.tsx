@@ -2,7 +2,6 @@ import { Button } from '../ui/Button';
 import { useDisplayType } from '@/hooks/Display';
 
 const ProductsBento = () => {
-
 	const displayType = useDisplayType();
 
 	return (
@@ -62,7 +61,9 @@ const ProductsBento = () => {
 			</div>
 			<div className="w-full px-8 viewport">
 				<div className="md:grid w-full md:grid-cols-2 gap-2.5 md:h-[320px] max-md:grid max-md:grid-rows-2">
-					<div className={`bg-[url(/assets/home/${displayType}/image-earphones-yx1.jpg)] w-full bg-fit bg-center rounded-[8px] max-md:h-[320px] bg-no-repeat`}></div>
+					<div
+						className={`bg-[url(/assets/home/${displayType}/image-earphones-yx1.jpg)] w-full bg-fit bg-center rounded-[8px] max-md:h-[320px] bg-no-repeat`}
+					></div>
 					<div className="w-full h-full bg-darkWhite max-md:h-[320px] rounded-[8px] flex flex-col justify-center px-6 md:px-16">
 						<div className="flex flex-col gap-y-[1.5rem]">
 							<h4 className="uppercase text-pureBlack text-h4">ZX7 SPEAKER</h4>
