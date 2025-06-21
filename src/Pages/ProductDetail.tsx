@@ -4,8 +4,8 @@ import data from '@/json/data.json';
 import { Minus, Plus } from 'lucide-react';
 import { Button } from '@/Components/ui/Button';
 import { useDisplayType } from '@/hooks/Display';
-import { useLocalStorage } from '@uidotdev/usehooks';
-import type { CartItem, Include } from '@/Types/Types';
+import type { Include } from '@/Types/Types';
+import { NumberFormat } from '@/Components/NumberFormats';
 
 const ProductDetail: React.FC = () => {
 	const display = useDisplayType();
@@ -14,49 +14,6 @@ const ProductDetail: React.FC = () => {
 	const { category } = useParams();
 
 	const product = data.find((product) => product.slug === slug);
-
-	const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
-
-	const addToCart = () => {
-		const cartItem = {
-			id: product?.id,
-			quantity: 1,
-			name: product?.name,
-			productImage: product?.categoryImage.mobile,
-			price: product?.price,
-		};
-
-		const newCart = [...cart, cartItem];
-		setCart(newCart);
-	};
-
-	const increaseQty = () => {
-		const selectedItem = cart.find((cartItem) => cartItem.id === product?.id);
-		if (selectedItem) {
-			const updatedCart = cart.map((item) =>
-				item.id === product?.id
-					? { ...item, quantity: (item.quantity ?? 0) + 1 }
-					: item
-			);
-			setCart(updatedCart);
-		}
-		quantity += 1;
-	};
-
-	const decreaseQty = () => {
-		if (quantity > 1) {
-			const selectedItem = cart.find((cartItem) => cartItem.id === product?.id);
-			if (selectedItem && selectedItem.quantity && selectedItem.quantity > 1) {
-				const updatedCart = cart.map((item) =>
-					item.id === product?.id
-						? { ...item, quantity: (item.quantity ?? 0) - 1 }
-						: item
-				);
-				setCart(updatedCart);
-			}
-			quantity -= 1;
-		}
-	};
 
 	return (
 		<>
@@ -67,6 +24,12 @@ const ProductDetail: React.FC = () => {
 					</Link>
 				</div>
 			</header>
+
+			{!product && (
+				<div className="flex items-center justify-center w-full h-screen">
+					<h1 className="text-2xl font-bold text-pureBlack">Product not found</h1>
+				</div>
+			)}
 
 			{product && (
 				<>
@@ -92,14 +55,13 @@ const ProductDetail: React.FC = () => {
 										{product.description}
 									</p>
 									<p className="text-h6 text-pureBlack">
-										{`$ `}
-										{product.price}
+										<NumberFormat amount={product.price} currency="USD" />
 									</p>
 								</div>
 								<div className="flex flex-row items-start w-full gap-x-4 md:items-center lg:items-start">
 									<div className="flex flex-row items-center p-2 gap-x-4 bg-darkWhite w-fit">
-										<button onClick={() => decreaseQty}>
-											<Minus className="w-4 h-4 stroke-black" />
+										<button onClick={() => { }}>
+											<Minus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 										<div className="px-3 text-center ">
 											<div className="font-bold tracking-tighter text-md ">
@@ -107,16 +69,14 @@ const ProductDetail: React.FC = () => {
 											</div>
 										</div>
 										<button
-											onClick={() => {
-												increaseQty;
-											}}
+											onClick={() => { }}
 										>
-											<Plus className="w-4 h-4 stroke-black" />
+											<Plus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 									</div>
 									<button
 										className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
-										onClick={() => addToCart}
+										onClick={() => { }}
 									>
 										Add To Cart
 									</button>

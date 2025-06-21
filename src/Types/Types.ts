@@ -38,9 +38,9 @@ export type OtherItem = {
 };
 
 export type CartItem = {
-	id: number | undefined;
-	name: string | undefined;
-	productImage: string | undefined;
-	price: number | undefined;
-	quantity: number | undefined;
+	id: number;
+	name: string;
+	slug: string;
+	price: number;
+	quantity: number;
 };

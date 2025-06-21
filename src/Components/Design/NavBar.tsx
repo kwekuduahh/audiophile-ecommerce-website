@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { AlignJustify, ShoppingCart } from 'lucide-react';
 import { CartPopover } from '@/Components/Design/CartPopover';
 import { useMediaQuery } from 'react-responsive';
+import NavMenu from './NavMenu';
 
 const NavBar = () => {
 	const isDesktop = useMediaQuery({
@@ -15,13 +16,13 @@ const NavBar = () => {
 	});
 
 	return (
-		<header className="bg-oilBlack ">
+		<header className="relative z-50 bg-oilBlack">
 			<section
 				className={`viewport flex flex-row w-full justify-between py-[2.25rem] border-b-[0.0625rem] border-pureWhite/20 ${isTablet && `px-[2.48rem]`} ${isDesktop && `px-[2.48rem]`} ${isMobile && `px-[1.2rem]`}`}
 			>
-				{isMobile && <AlignJustify className="stroke-pureWhite" />}
+				{isMobile && <NavMenu><AlignJustify className="cursor-pointer stroke-pureWhite" /></NavMenu>}
 				<div className="flex flex-row gap-x-[2.26rem]">
-					{isTablet && <AlignJustify className="stroke-pureWhite" />}
+					{isTablet && <NavMenu><AlignJustify className="cursor-pointer stroke-pureWhite" /></NavMenu>}
 					<Link to="/">
 						<img src="/audiophileLogo.svg" alt="Logo of Audiophile" />
 					</Link>
@@ -55,8 +56,8 @@ const NavBar = () => {
 					</nav>
 				)}
 				<div>
-					<CartPopover>
-						<ShoppingCart className="stroke-pureWhite" />
+					<CartPopover Products={[]}>
+						<ShoppingCart className="cursor-pointer stroke-pureWhite" />
 					</CartPopover>
 				</div>
 			</section>
