@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Product = {
 	categoryName: string;
 	productID: number;
@@ -43,4 +45,17 @@ export type CartItem = {
 	slug: string;
 	price: number;
 	quantity: number;
+};
+
+export type ShoppingCartProviderProps = {
+	children: ReactNode;
+};
+
+export type ShoppingCartContextType = {
+	shoppingCart: CartItem[];
+	addToCart: (item: CartItem) => void;
+	updateCartItemQuantity: (id: number, quantity: number) => void;
+	clearCart: () => void;
+	calculateTotalPrice: () => number;
+	getCartItemCount: () => number;
 };

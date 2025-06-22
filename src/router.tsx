@@ -19,20 +19,20 @@ export const router = createBrowserRouter([
 				path: 'checkout',
 				element: <Checkout />,
 			},
-		],
-	},
-	{
-		path: ':category/',
-		element: <DetailLayout />,
-		children: [
 			{
-				path: '',
-				element: <CategoryProductListing />,
-			},
-			{
-				path: ':slug',
-				element: <ProductDetail />,
-			},
+				path: ':category/',
+				element: <DetailLayout />,
+				children: [
+					{
+						path: '',
+						element: <CategoryProductListing />,
+					},
+					{
+						path: ':slug',
+						element: <ProductDetail />,
+					},
+				],
+			}
 		],
-	},
+	}
 ]);

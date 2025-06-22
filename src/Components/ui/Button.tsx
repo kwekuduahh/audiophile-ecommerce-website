@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '../../Lib/utils';
 import { Link } from 'react-router';
 
 interface ButtonVariants {
@@ -8,6 +8,7 @@ interface ButtonVariants {
 	className?: string;
 	children?: ReactNode;
 	link: string;
+	onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonVariants> = ({
@@ -16,6 +17,7 @@ export const Button: React.FC<ButtonVariants> = ({
 	className,
 	children,
 	link,
+	onClick
 }) => {
 	const variantOpt = {
 		Solid:
@@ -27,7 +29,7 @@ export const Button: React.FC<ButtonVariants> = ({
 	};
 
 	return (
-		<Link to={link} className={cn(variantOpt[variant], className)}>
+		<Link to={link} className={cn(variantOpt[variant], className)} onClick={onClick}>
 			{action}
 			{` `}
 			{children}

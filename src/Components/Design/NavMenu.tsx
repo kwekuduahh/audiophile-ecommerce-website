@@ -4,9 +4,11 @@ import ArrowRight from '/assets/shared/desktop/icon-arrow-right.svg';
 
 interface NavMenuProps {
 	children?: React.ReactNode;
+	openMenu: boolean;
+	setOpenMenu: (boolean: boolean) => void;
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ children }) => {
+const NavMenu: React.FC<NavMenuProps> = ({ children, openMenu, setOpenMenu }) => {
 	const Products = [
 		{
 			name: 'headphones',
@@ -27,16 +29,19 @@ const NavMenu: React.FC<NavMenuProps> = ({ children }) => {
 			link: '/earphones',
 		},
 	];
+
+
+
 	return (
-		<Sheet>
+		<Sheet open={openMenu} onOpenChange={setOpenMenu}>
 			<SheetTrigger>{children}</SheetTrigger>
 			<SheetContent
 				side={'top'}
 				style={{ width: '98vw' }}
-				className="p-4 mt-24 h-fit bg-pureWhite rounded-br-2xl rounded-bl-2xl"
+				className="h-screen px-4 py-12 mt-24 overflow-y-scroll bg-pureWhite rounded-br-2xl rounded-bl-2xl"
 			>
 				<section className="bg-pureWhite">
-					<div className="flex flex-col items-center justify-between w-full gap-24 mt-24 min-[500px]:gap-3 min-[500px]:flex-row">
+					<div className="flex flex-col items-center justify-between w-full gap-24 my-24 min-[500px]:gap-3 min-[500px]:flex-row">
 						{Products.map((Product) => (
 							<div
 								key={Math.random()}
@@ -50,6 +55,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ children }) => {
 										link={Product.link}
 										className="flex flex-row items-center gap-x-2"
 										action="shop"
+										onClick={() => setOpenMenu(!openMenu)}
 									>
 										<img
 											src={ArrowRight}

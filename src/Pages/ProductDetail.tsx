@@ -3,18 +3,31 @@ import { Link, useParams } from 'react-router';
 import data from '@/json/data.json';
 import { Minus, Plus } from 'lucide-react';
 import { Button } from '@/Components/ui/Button';
-import { useDisplayType } from '@/hooks/Display';
-import type { Include } from '@/Types/Types';
+import { useDisplayType } from '@/Hooks/useDisplay';
+import type { CartItem, Include } from '@/Types/Types';
 import { NumberFormat } from '@/Components/NumberFormats';
+import { useShoppingCartContext } from '@/Context/useShoppingCartContext';
+import { useToast } from '@/Hooks/use-toast';
+
 
 const ProductDetail: React.FC = () => {
 	const display = useDisplayType();
-	let quantity = 1;
 	const { slug } = useParams();
 	const { category } = useParams();
-
+	const { toast } = useToast();
+	const [quantity, setQuantity] = React.useState(1);
 	const product = data.find((product) => product.slug === slug);
+	const { addToCart: handleAddToCart } = useShoppingCartContext();
 
+	const AddToCart = (CartItem: CartItem) => {
+		handleAddToCart({ ...CartItem, quantity: quantity });
+		toast({
+
+			title: 'Item added to Cart',
+			description: `${CartItem.slug} has been added to your cart.`
+		})
+		setQuantity(1);
+	}
 	return (
 		<>
 			<header className="w-full px-8 bg-pureWhite pt-7">
@@ -36,7 +49,7 @@ const ProductDetail: React.FC = () => {
 			{product && (
 				<>
 					<section
-						key={product?.id}
+						key={product.id}
 						className="flex flex-row w-full py-12 bg-pureWhite lg:gap-y-24"
 					>
 						<div className="flex flex-col items-center w-full px-8 lg:flex lg:flex-row lg:items-start gap-x-12 viewport">
@@ -62,7 +75,7 @@ const ProductDetail: React.FC = () => {
 								</div>
 								<div className="flex flex-row items-start w-full gap-x-4 md:items-center lg:items-start">
 									<div className="flex flex-row items-center p-2 gap-x-4 bg-darkWhite w-fit">
-										<button onClick={() => {}}>
+										<button onClick={() => { setQuantity(quantity - 1) }} disabled={quantity === 1}>
 											<Minus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 										<div className="px-3 text-center ">
@@ -70,13 +83,21 @@ const ProductDetail: React.FC = () => {
 												{quantity}
 											</div>
 										</div>
-										<button onClick={() => {}}>
+										<button onClick={() => { setQuantity(quantity + 1) }}>
 											<Plus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 									</div>
 									<button
 										className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
-										onClick={() => {}}
+										onClick={() => {
+											AddToCart({
+												id: product.id,
+												name: product.name,
+												slug: product.slug,
+												price: product.price,
+												quantity: quantity
+											})
+										}}
 									>
 										Add To Cart
 									</button>
@@ -96,8 +117,8 @@ const ProductDetail: React.FC = () => {
 								in the box
 							</h3>
 							<div className="flex flex-col w-full gap-3">
-								{product?.includes?.map((include: Include) => (
-									<div className="flex flex-row w-full gap-x-8 text-body text-pureBlack/50">
+								{product.includes.map((include: Include) => (
+									<div key={Math.random()} className="flex flex-row w-full gap-x-8 text-body text-pureBlack/50">
 										<p className="text-darkOrange text-body">{`${include.quantity}x`}</p>
 										<p className="text-pureBlack/50 text-body">
 											{include.item}
@@ -130,7 +151,7 @@ const ProductDetail: React.FC = () => {
 								<div className="flex flex-col lg:flex-row gap-x-[1.5rem]">
 									{product.others.map((otherItem) => (
 										<div
-											key={product.id}
+											key={Math.random()}
 											className="flex flex-col items-center gap-y-[1.5rem]"
 										>
 											<div className="md:w-[80%] w-[90%]  bg-darkWhite rounded-[8px] overflow-hidden">

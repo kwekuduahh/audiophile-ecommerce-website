@@ -1,5 +1,5 @@
 import { Button } from '../ui/Button';
-import { useDisplayType } from '@/hooks/Display';
+import { useDisplayType } from '@/Hooks/useDisplay';
 
 const ProductsBento = () => {
 	const displayType = useDisplayType();

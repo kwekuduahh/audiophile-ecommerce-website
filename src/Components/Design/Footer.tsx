@@ -6,17 +6,17 @@ const Footer = () => {
 	return (
 		<section className="w-full bg-pureBlack">
 			<div className="viewport">
-				<div className="relative flex flex-col items-center w-full p-6 lg:p-10 gap-y-8 md:items-start">
+				<div className="relative flex flex-col items-center w-full p-6 min-[769px]:p-10 gap-y-8 md:items-start">
 					<div className="absolute top-0 w-24 h-2 bg-darkOrange"></div>
-					<div className="flex flex-col items-center w-full md:items-start lg:flex lg:flex-row lg:justify-between lg:items-center">
+					<div className="flex flex-col items-center w-full md:items-start min-[769px]:flex min-[769px]:flex-row min-[769px]:justify-between min-[769px]:items-center">
 						<Link to="/">
 							<img
 								src="/audiophileLogo.svg"
 								alt="Logo of Audiophile"
-								className="pt-8 lg:pt-0"
+								className="pt-8 min-[769px]:pt-0"
 							/>
 						</Link>
-						<nav className=" flex flex-col gap-y-[2.12rem] text-center md:flex md:flex-row gap-x-4 md:text-start">
+						<nav className=" flex flex-col gap-y-[2.12rem] max-[768px]:mt-12  text-center md:flex md:flex-row gap-x-4 md:text-start">
 							<Link
 								to="/"
 								className="uppercase duration-300 text-subtitle text-pureWhite hover:text-darkOrange"
@@ -44,7 +44,7 @@ const Footer = () => {
 						</nav>
 					</div>
 					<div className="text-center md:text-start">
-						<p className="text-body text-pureWhite/50 lg:max-w-[540px]">
+						<p className="text-body text-pureWhite/50 min-[769px]:max-w-[540px]">
 							Audiophile is an all in one stop to fulfill your audio needs.
 							We're a small team of music lovers and sound specialists who are
 							devoted to helping you get the most out of personal audio. Come

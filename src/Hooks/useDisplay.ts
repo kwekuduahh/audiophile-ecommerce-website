@@ -3,10 +3,10 @@ import { useMediaQuery } from 'react-responsive';
 
 export const useDisplayType = (): Display => {
 	const isDesktop = useMediaQuery({
-		query: '(min-width: 800px)',
+		query: '(min-width: 769px)',
 	});
 	const isTablet = useMediaQuery({
-		query: '(max-width: 799px) and (min-width: 376px)',
+		query: '(max-width: 768px) and (min-width: 376px)',
 	});
 
 	if (isDesktop) return 'desktop';

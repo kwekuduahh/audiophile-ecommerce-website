@@ -22,7 +22,7 @@ const Hero = () => {
 						New Product
 					</p>
 					<div className="flex flex-col gap-y-[1.5rem]">
-						<h1 className="uppercase text-pureWhite text-h1">
+						<h1 className="uppercase text-pureWhite text-h1 max-sm:text-[48px]">
 							XX99 Mark II Headphones
 						</h1>
 						<p className="text-pureWhite">

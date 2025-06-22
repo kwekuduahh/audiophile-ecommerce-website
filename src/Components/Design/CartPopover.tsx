@@ -5,38 +5,41 @@ import {
 } from '@/Components/ui/popover';
 import { NumberFormat } from '../NumberFormats';
 import ItemInCart from './CartItem';
-import type { CartItem } from '@/Types/Types';
+import { useShoppingCartContext } from '@/Context/useShoppingCartContext';
+import { Button } from '../ui/Button';
 
 interface CartProps {
 	children: React.ReactNode;
-	Products: CartItem[];
+	openMenu: boolean;
+	setOpenMenu: (boolean: boolean) => void;
 }
 
-export const CartPopover: React.FC<CartProps> = ({ children, Products }) => {
+export const CartPopover: React.FC<CartProps> = ({ children, openMenu, setOpenMenu }) => {
+	const { shoppingCart, getCartItemCount, calculateTotalPrice, clearCart: handleRemoveAll } = useShoppingCartContext();
 	return (
-		<Popover>
+		<Popover open={openMenu} onOpenChange={setOpenMenu}>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
 			<PopoverContent className="min-w-80 max-sm:w-[94vw]">
 				<div className="grid gap-4">
 					<div className="flex flex-row justify-between">
 						<div className="flex flex-row items-center uppercase outline-none gap-x-2 text-h6">
 							<h4 className="leading-none ">Cart</h4>
-							<span>({0})</span>
+							<span>({getCartItemCount()})</span>
 						</div>
-						<button className="underline text-body text-pureBlack/50">
+						<button className="underline text-body text-pureBlack/50" onClick={handleRemoveAll}>
 							Remove all
 						</button>
 					</div>
 					<div className="grid w-full grid-cols-1 gap-2">
-						{0 ? (
-							Products.map((Product) => (
-								<ItemInCart
+						{getCartItemCount() !== 0 ? (
+							shoppingCart?.map((Product) => (
+								<ItemInCart key={Product.id}
 									item={{
 										id: Product.id,
 										name: Product.name,
 										slug: Product.slug,
 										price: Product.price,
-										quantity: 1,
+										quantity: Product.quantity,
 									}}
 								/>
 							))
@@ -50,15 +53,16 @@ export const CartPopover: React.FC<CartProps> = ({ children, Products }) => {
 						<div className="flex flex-row justify-between">
 							<p className="uppercase text-body text-pureBlack/50">Total</p>
 							<p className="uppercase text-body text-pureBlack/50">
-								<NumberFormat amount={5396} currency="USD" />
+								<NumberFormat amount={calculateTotalPrice()} currency="USD" />
 							</p>
 						</div>
-						<button
-							className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
-							disabled={true}
+						{getCartItemCount() > 0 ? <Button action='Checkout' link='/checkout' variant='Solid' onClick={() => setOpenMenu(!openMenu)}
+							className="px-8 py-3 text-center uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
+						/> : <button disabled
+							className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-fadedOrange hover:bg-fadedOrange"
 						>
 							Checkout
-						</button>
+						</button>}
 					</div>
 				</div>
 			</PopoverContent>
