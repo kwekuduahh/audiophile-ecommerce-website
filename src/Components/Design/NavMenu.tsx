@@ -8,7 +8,11 @@ interface NavMenuProps {
 	setOpenMenu: (boolean: boolean) => void;
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ children, openMenu, setOpenMenu }) => {
+const NavMenu: React.FC<NavMenuProps> = ({
+	children,
+	openMenu,
+	setOpenMenu,
+}) => {
 	const Products = [
 		{
 			name: 'headphones',
@@ -29,8 +33,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ children, openMenu, setOpenMenu }) =>
 			link: '/earphones',
 		},
 	];
-
-
 
 	return (
 		<Sheet open={openMenu} onOpenChange={setOpenMenu}>

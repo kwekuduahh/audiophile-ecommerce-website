@@ -14,8 +14,17 @@ interface CartProps {
 	setOpenMenu: (boolean: boolean) => void;
 }
 
-export const CartPopover: React.FC<CartProps> = ({ children, openMenu, setOpenMenu }) => {
-	const { shoppingCart, getCartItemCount, calculateTotalPrice, clearCart: handleRemoveAll } = useShoppingCartContext();
+export const CartPopover: React.FC<CartProps> = ({
+	children,
+	openMenu,
+	setOpenMenu,
+}) => {
+	const {
+		shoppingCart,
+		getCartItemCount,
+		calculateTotalPrice,
+		clearCart: handleRemoveAll,
+	} = useShoppingCartContext();
 	return (
 		<Popover open={openMenu} onOpenChange={setOpenMenu}>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -26,14 +35,18 @@ export const CartPopover: React.FC<CartProps> = ({ children, openMenu, setOpenMe
 							<h4 className="leading-none ">Cart</h4>
 							<span>({getCartItemCount()})</span>
 						</div>
-						<button className="underline text-body text-pureBlack/50" onClick={handleRemoveAll}>
+						<button
+							className="underline text-body text-pureBlack/50"
+							onClick={handleRemoveAll}
+						>
 							Remove all
 						</button>
 					</div>
 					<div className="grid w-full grid-cols-1 gap-2">
 						{getCartItemCount() !== 0 ? (
 							shoppingCart?.map((Product) => (
-								<ItemInCart key={Product.id}
+								<ItemInCart
+									key={Product.id}
 									item={{
 										id: Product.id,
 										name: Product.name,
@@ -56,13 +69,22 @@ export const CartPopover: React.FC<CartProps> = ({ children, openMenu, setOpenMe
 								<NumberFormat amount={calculateTotalPrice()} currency="USD" />
 							</p>
 						</div>
-						{getCartItemCount() > 0 ? <Button action='Checkout' link='/checkout' variant='Solid' onClick={() => setOpenMenu(!openMenu)}
-							className="px-8 py-3 text-center uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
-						/> : <button disabled
-							className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-fadedOrange hover:bg-fadedOrange"
-						>
-							Checkout
-						</button>}
+						{getCartItemCount() > 0 ? (
+							<Button
+								action="Checkout"
+								link="/checkout"
+								variant="Solid"
+								onClick={() => setOpenMenu(!openMenu)}
+								className="px-8 py-3 text-center uppercase duration-300 text-body text-pureWhite bg-darkOrange hover:bg-fadedOrange"
+							/>
+						) : (
+							<button
+								disabled
+								className="px-8 py-3 uppercase duration-300 text-body text-pureWhite bg-fadedOrange hover:bg-fadedOrange"
+							>
+								Checkout
+							</button>
+						)}
 					</div>
 				</div>
 			</PopoverContent>

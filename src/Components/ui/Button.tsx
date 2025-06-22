@@ -17,7 +17,7 @@ export const Button: React.FC<ButtonVariants> = ({
 	className,
 	children,
 	link,
-	onClick
+	onClick,
 }) => {
 	const variantOpt = {
 		Solid:
@@ -29,7 +29,11 @@ export const Button: React.FC<ButtonVariants> = ({
 	};
 
 	return (
-		<Link to={link} className={cn(variantOpt[variant], className)} onClick={onClick}>
+		<Link
+			to={link}
+			className={cn(variantOpt[variant], className)}
+			onClick={onClick}
+		>
 			{action}
 			{` `}
 			{children}

@@ -27,19 +27,25 @@ const ItemInCart: React.FC<CartItemProps> = ({ item }) => {
 				</div>
 			</div>
 			<div className="flex flex-row items-center p-2 gap-x-4 bg-darkWhite w-fit">
-				<button onClick={() => {
-					updateCartItemQuantity(item.id, item.quantity - 1);
-				}} className='cursor-pointer hover:stroke-darkOrange'>
+				<button
+					onClick={() => {
+						updateCartItemQuantity(item.id, item.quantity - 1);
+					}}
+					className="cursor-pointer hover:stroke-darkOrange"
+				>
 					<Minus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 				</button>
 				<div className="px-3 text-center ">
 					<div className="font-bold tracking-tighter text-md ">
-						{shoppingCart.find(cartItem => cartItem.id === item.id)?.quantity}
+						{shoppingCart.find((cartItem) => cartItem.id === item.id)?.quantity}
 					</div>
 				</div>
-				<button onClick={() => {
-					updateCartItemQuantity(item.id, item.quantity + 1);
-				}} className='cursor-pointer hover:stroke-darkOrange'>
+				<button
+					onClick={() => {
+						updateCartItemQuantity(item.id, item.quantity + 1);
+					}}
+					className="cursor-pointer hover:stroke-darkOrange"
+				>
 					<Plus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 				</button>
 			</div>

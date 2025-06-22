@@ -9,7 +9,6 @@ import { NumberFormat } from '@/Components/NumberFormats';
 import { useShoppingCartContext } from '@/Context/useShoppingCartContext';
 import { useToast } from '@/Hooks/use-toast';
 
-
 const ProductDetail: React.FC = () => {
 	const display = useDisplayType();
 	const { slug } = useParams();
@@ -22,12 +21,11 @@ const ProductDetail: React.FC = () => {
 	const AddToCart = (CartItem: CartItem) => {
 		handleAddToCart({ ...CartItem, quantity: quantity });
 		toast({
-
 			title: 'Item added to Cart',
-			description: `${CartItem.slug} has been added to your cart.`
-		})
+			description: `${CartItem.slug} has been added to your cart.`,
+		});
 		setQuantity(1);
-	}
+	};
 	return (
 		<>
 			<header className="w-full px-8 bg-pureWhite pt-7">
@@ -75,7 +73,12 @@ const ProductDetail: React.FC = () => {
 								</div>
 								<div className="flex flex-row items-start w-full gap-x-4 md:items-center lg:items-start">
 									<div className="flex flex-row items-center p-2 gap-x-4 bg-darkWhite w-fit">
-										<button onClick={() => { setQuantity(quantity - 1) }} disabled={quantity === 1}>
+										<button
+											onClick={() => {
+												setQuantity(quantity - 1);
+											}}
+											disabled={quantity === 1}
+										>
 											<Minus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 										<div className="px-3 text-center ">
@@ -83,7 +86,11 @@ const ProductDetail: React.FC = () => {
 												{quantity}
 											</div>
 										</div>
-										<button onClick={() => { setQuantity(quantity + 1) }}>
+										<button
+											onClick={() => {
+												setQuantity(quantity + 1);
+											}}
+										>
 											<Plus className="w-4 h-4 cursor-pointer stroke-black hover:stroke-darkOrange" />
 										</button>
 									</div>
@@ -95,8 +102,8 @@ const ProductDetail: React.FC = () => {
 												name: product.name,
 												slug: product.slug,
 												price: product.price,
-												quantity: quantity
-											})
+												quantity: quantity,
+											});
 										}}
 									>
 										Add To Cart
@@ -118,7 +125,10 @@ const ProductDetail: React.FC = () => {
 							</h3>
 							<div className="flex flex-col w-full gap-3">
 								{product.includes.map((include: Include) => (
-									<div key={Math.random()} className="flex flex-row w-full gap-x-8 text-body text-pureBlack/50">
+									<div
+										key={Math.random()}
+										className="flex flex-row w-full gap-x-8 text-body text-pureBlack/50"
+									>
 										<p className="text-darkOrange text-body">{`${include.quantity}x`}</p>
 										<p className="text-pureBlack/50 text-body">
 											{include.item}

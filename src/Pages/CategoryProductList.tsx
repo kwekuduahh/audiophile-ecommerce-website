@@ -22,7 +22,8 @@ const CategoryProductListing: React.FC = () => {
 			</header>
 			<section className="flex flex-col w-full py-12 bg-pureWhite lg:gap-y-24">
 				{products.map((product, index) => (
-					<div key={product.id}
+					<div
+						key={product.id}
 						className={`flex ${index % 2 === 0 ? `lg:flex-row` : `lg:flex-row-reverse`} md:flex-row p-6 min-[769px]:px-12 flex-col items-center justify-between w-full viewport gap-y-8 pb-16`}
 					>
 						<div className="lg:w-[33.75rem] min-[769px]:max-w-[680px] min-[768px]:w-[80%] w-[90%]  bg-darkWhite rounded-[8px] overflow-hidden">
