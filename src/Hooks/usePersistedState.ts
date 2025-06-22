@@ -1,4 +1,4 @@
-import { getItem, setItem } from '@/lib/localStorage.ts';
+import { getItem, setItem } from '@/lib/localStorage';
 import React from 'react';
 
 function usePersistedState<T>(key: string, initialValue: T) {

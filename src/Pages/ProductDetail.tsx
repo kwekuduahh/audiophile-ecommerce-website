@@ -156,9 +156,9 @@ const ProductDetail: React.FC = () => {
 					</section>
 					<section className="flex flex-col w-full bg-pureWhite lg:gap-y-24">
 						<div className="flex flex-col items-center w-full px-8 py-20 gap-y-5 viewport">
-							<h3 className="uppercase text-h3 text-pureBlack">{`You may Also like`}</h3>
+							<h3 className="uppercase text-h3 text-pureBlack">You may Also like</h3>
 							<div className="flex flex-col lg:flex lg:flex-row lg:gap-x-4 gap-y-5">
-								<div className="flex flex-col lg:flex-row gap-x-[1.5rem]">
+								<div className="flex flex-col lg:flex-row gap-x-[1.5rem] gap-y-[2.5rem]">
 									{product.others.map((otherItem) => (
 										<div
 											key={Math.random()}
