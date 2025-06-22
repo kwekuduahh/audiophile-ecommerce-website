@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { cn } from '@/Lib/utils';
+import { cn } from '@/lib/utils';
 import { Link } from 'react-router';
 
 interface ButtonVariants {
